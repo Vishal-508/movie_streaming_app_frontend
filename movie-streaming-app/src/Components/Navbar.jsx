@@ -17,16 +17,27 @@ import {
     useColorModeValue,
     Stack,
   } from '@chakra-ui/react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-  const Links= ["Home","AddMovies",]
-    
+ 
   
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
+  const Links= ["Home","AddMovies",]
+  const handleLogout=()=>{
+    localStorage.setItem("token","");
+    localStorage.setItem("isAuth",false)
+    navigate("/login")
+  }
+
     const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box m={"0"} w={{'lg':"100vw", 'md':"100vw", 'sm':"100vw", "base":"100vw" }} bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+    <Box color={"whiteAlpha.800"} m={"0"} w={{'lg':"100vw", 'md':"100vw", 'sm':"100vw", "base":"100vw" }} 
+    bg={"rgb(3, 0, 0,0.2)"}
+    //  bg={useColorModeValue('red.100', 'red.900')}
+     px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -61,8 +72,8 @@ const Navbar = () => {
                   }
                 />
               </MenuButton>
-              <MenuList>
-                <MenuItem>LogOut</MenuItem>
+              <MenuList bg={"none"} border={"none"}  >
+                <MenuItem border={"none"} bg={"rgb(3, 0, 0,0.7)"} _hover={{border:"none"}} onClick={handleLogout} >LogOut</MenuItem>
                
               </MenuList>
             </Menu>

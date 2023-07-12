@@ -3,7 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center; */
-  background: #eaeaea;
+  /* background: #eaeaea; */
+  background: url("/src/assets/home_1.jpg");
+  background-size: cover;
+  /* background: none; */
+
 }
 
 
